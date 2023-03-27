@@ -48,7 +48,7 @@ Contact: contact@hencework.com
 													<div class="row gx-3">
 														<div class="form-group col-lg-12">
 															<div class="form-label-group">
-																<label>Email <Address></Address></label>
+																<label>Email Address <Address></Address></label>
 															</div>
                                                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email address"  value="{{ old('email') }}" required autocomplete="email" autofocus>
 
