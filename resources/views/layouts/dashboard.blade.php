@@ -24,9 +24,28 @@ Contact: contact@hencework.com
 	<!-- Data Table CSS -->
     <link href="{{asset('asset/vendors/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('asset/vendors/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}" rel="stylesheet" type="text/css" />
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 	<!-- CSS -->
     <link href="{{asset('asset/dist/css/style.css')}}" rel="stylesheet" type="text/css">
+    <!-- yajrabox css -->
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+      .toast-success{
+        background: green;
+      }
+      .toast-info{
+        background: blue;
+      }
+      .toast-warning{
+        background: orange;
+      }
+      .toast-error{
+        background: red;
+      }
+	  </style>
 </head>
 <body>
    	<!-- Wrapper -->
@@ -111,5 +130,29 @@ Contact: contact@hencework.com
 	<script src="{{asset('asset/dist/js/init.js')}}"></script>
 	<script src="{{asset('asset/dist/js/chips-init.js')}}"></script>
 	<script src="{{asset('asset/dist/js/dashboard-data.js')}}"></script>
+
+
+	  	 <!-- toaster js -->
+		   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!-- toaster script -->
+  <script>
+    @if(Session::has('message'))
+    var type = "{{ Session ::get('alert_type','danger') }}"
+    switch(type){
+        case 'info':
+        toastr.info("{{ Session ::get('message') }}");
+        break;
+        case 'success':
+        toastr.success("{{ Session ::get('message') }}");
+        break;
+        case 'warning':
+        toastr.warning("{{ Session ::get('message') }}");
+        break;
+        case 'error':
+        toastr.error("{{ Session ::get('message') }}");
+        break;
+    }
+    @endif
+  </script>
 </body>
 </html>

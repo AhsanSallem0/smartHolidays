@@ -12,4 +12,34 @@
 
 body{
     font-family: Candara;
+    background-color: #F5F5F5 !important;
+}
+.card-header{
+    background-color: rgb(198, 153, 68) !important;
+    color: white;;
+    font-weight: bold;
+    font-family: Candara;
+}
+label , th{
+    font-weight: bold;
+
+}
+.pagination .page-item.active .page-link {
+    background: rgb(198, 153, 68) !important;;
+    border-color: rgb(198, 153, 68) !important;;
+    color: #fff;
+}
+.card-body{
+    width: 100%;
+    overflow-y: auto;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    text-align: center !important;
+}
+.fa{
+    font-size: 24px;
+}
+#toast-container{
+    margin-top: 60px !important;
 }

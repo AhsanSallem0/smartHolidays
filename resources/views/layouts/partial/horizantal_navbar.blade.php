@@ -27,7 +27,7 @@
         <div class="menu-content-wrap">
             <div class="container-fluid menu-group">
                 <ul class="navbar-nav flex-column">
-                    <li class="nav-item active">
+                    <li class="nav-item {{ Request::is('home') ? 'active':''; }}">
                         <a class="nav-link" href="{{url('/home')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
@@ -45,8 +45,8 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="email.html">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{url('/ticket')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -56,11 +56,11 @@
                                     </svg>
                                 </span>
                             </span>
-                            <span class="nav-link-text">Packages</span>
+                            <span class="nav-link-text">Tickets</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="email.html">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
@@ -73,10 +73,10 @@
                             </span>
                             <span class="nav-link-text">Ticket</span>
                         </a>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="email.html">
+                    <li class="nav-item {{ Request::is('customer') ? 'active':''; }}">
+                        <a class="nav-link" href="{{url('/customer')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -91,7 +91,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="email.html">
+                    <a class="nav-link" href="{{url('/expense')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
