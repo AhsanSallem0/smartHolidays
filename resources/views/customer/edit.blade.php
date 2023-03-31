@@ -14,7 +14,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Reference Number *</label>
-                            <input type="number" class="form-control text-dark" disabled id="reference" value="{{$customer->uniqueId}}" name="reference" placeholder="">
+                            <input type="text" class="form-control text-dark" disabled id="reference" value="{{$customer->uniqueId}}" placeholder="">
 
                         </div>
 

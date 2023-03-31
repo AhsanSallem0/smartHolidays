@@ -37,8 +37,8 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Reference Number *</label>
-                            <input type="number" class="form-control" id="reference" name="reference" placeholder="">
-                            <p id="emailError" style="color: red;">  </p>
+                            <input type="text" class="form-control text-dark"  disabled value="{{$referenceNo}}" >
+                            <input type="hidden" class="form-control text-dark"  value="{{$referenceNo}}" id="reference" name="reference" placeholder="">
 
                         </div>
                         <div class="form-group">
@@ -76,50 +76,7 @@
 
 
 <script>
-   $(document).ready(function() {
-        // Attach a click event handler to the submit button
-            $('#submit').click(function(event) {
-            event.preventDefault(); 
-
-            var reference = $('#reference').val();
-            var name = $('#name').val();
-            var email = $('#email').val();
-            var phone = $('#phone').val();
-            var address = $('#address').val();
-
-            if(reference.length == "")
-            {
-                $('#emailError').text('Please fill with unique number');
-
-                return false;
-            }
-            else{
-                $.ajax({
-                url: '/check-email-unique',
-                method: 'POST', 
-                headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                data: {
-                    reference: reference , name: name , email : email , phone  : phone , address : address
-                },
-                success: function(response) {
-                        if (response.success) {
-                        $('#emailError').text('Please fill with unique number');
-                        } else if (response.done) {
-                            location.reload(true);
-                            toastr.success(success.message,'New Customer has been added!');
-                        }
-                    }
-                });
-            }
-            
-
-            
-           
-        });
-    });
-</script>
+ 
 
   <!-- DataTables -->
   <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>

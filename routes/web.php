@@ -69,7 +69,7 @@ Route::get('/ticket', [PackageController::class, 'ticketPage'])->name('ticket');
 Route::get('/ticket/add', [PackageController::class, 'ticketAdd'])->name('ticket.add');
 
 
-Route::post('/check-email-unique', [PackageController::class, 'checkEmailAvailability'])->name('check.email.unique');
+// Route::post('/check-email-unique', [PackageController::class, 'checkEmailAvailability'])->name('check.email.unique');
 
 
 

@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 use auth;
 use App\Models\User;
 use App\Models\Customer;
+use App\Models\UniqueId;
 use Illuminate\Support\Carbon;
 use DB;
 use Hash;
 use Image;
+use Illuminate\Support\Str;
 use Yajra\Datatables\Datatables;
 
 
@@ -17,7 +19,22 @@ class CustomerController extends Controller
 {
     // page
     public function page(){
-        return view('customer.index');
+
+
+        $prefix = 'SH';
+        $number = str_pad(mt_rand(1, 9999), 2, '0', STR_PAD_LEFT);
+        $uniqueId = $prefix . $number;
+
+
+
+        $UniqueId = new UniqueId;
+        $UniqueId->referenceNo = $uniqueId;
+        $UniqueId->save();
+
+        $referenceNo = $UniqueId->referenceNo;
+
+        
+        return view('customer.index',compact('referenceNo'));
     }
     // yajra boc
     public function customerData()
@@ -53,7 +70,6 @@ class CustomerController extends Controller
      //update
      public function update(Request $request,$id){
         Customer::find($id)->update([
-            'uniqueId' => $request->reference,
             'fullname' => $request->fullname,
             'email' => $request->email,
             'phone' => $request->phone,

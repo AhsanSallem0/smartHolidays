@@ -50,7 +50,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Customer Reference No: * (It must be unique)</label>
-                                            <input type="number" class="form-control" id="reference" name="reference" placeholder="">
+                                            <input type="text" class="form-control text-dark" disabled value="{{$referenceNo}}" id="reference" name="reference" placeholder="">
                                         <p id="p3" class="text-danger"></p>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@
           else if(reference.length == "")
           {
             $("#p3").text("This field is required!");
-            $("#cusNum").focus();
+            $("#reference").focus();
             return false;
           }
           else if(name.length == "")
@@ -222,7 +222,7 @@
           else if(passenger.length == "")
           {
             $("#p5").text("This field is required!");
-            $("#from").focus();
+            $("#passenger").focus();
             return false;
           }
           else if(purchase.length == "")
