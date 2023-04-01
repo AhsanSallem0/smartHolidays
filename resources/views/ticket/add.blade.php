@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{url('/update/expense/')}}" method="POST">
+                    <form action="{{url('/ticket/insert')}}" method="POST">
                         @csrf
                         
                            <div class="row">
@@ -35,7 +35,7 @@
                                         <select name="cusNum" class="form-control" id="cusNum">
                                             <option value="" selected> -- Existing Customer --</option>
                                            @foreach($customer as $cus)
-                                           <option value="{{$cus->id}}">{{$cus->fullname}}</option>
+                                           <option value="{{$cus->uniqueId}}">{{$cus->uniqueId}}</option>
                                            @endforeach
                                         </select>
 
@@ -49,8 +49,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Customer Reference No: * (It must be unique)</label>
-                                            <input type="text" class="form-control text-dark" disabled value="{{$referenceNo}}" id="reference" name="reference" placeholder="">
+                                        <label for="exampleInputEmail1">Reference No: * (Auto generated for new customer)</label>
+                                            <input type="text" class="form-control text-dark"   value="{{$referenceNo}}" id="reference" name="reference" placeholder="">
                                         <p id="p3" class="text-danger"></p>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Customer Email Address</label>
-                                            <input type="number" class="form-control" id="email" name="email" placeholder="">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -95,6 +95,14 @@
                                 <div class="col-12">
                                     <hr>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Sale Price *</label>
+                                        <input type="number" class="form-control" id="sale"  name="sale" placeholder="">
+                                        <p id="p7" class="text-danger"></p>
+
+                                    </div>
+                                </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -105,16 +113,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Sale Price *</label>
-                                        <input type="number" class="form-control" id="sale"  name="sale" placeholder="">
-                                        <p id="p7" class="text-danger"></p>
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
                                         <label for="exampleInputPassword1">Profit</label>
-                                        <input type="number" value="0" disabled class="form-control text-dark" id="profit"  name="profit" placeholder="">
+                                        <input type="number" value="0"  class="form-control text-dark" id="profit"  name="profit" placeholder="">
 
                                     </div>
                                 </div>
@@ -147,8 +147,8 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputPassword1">Remaining payment </label>
-                                        <input type="number" disabled value="0" class="form-control text-dark" id="remaining"  name="remainingPayment" placeholder="">
+                                        <label for="exampleInputPassword1">Remaining balance </label>
+                                        <input type="number"  value="0" class="form-control text-dark" id="remaining"  name="remainingPayment" placeholder="">
 
                                     </div>
                                 </div>
@@ -157,7 +157,7 @@
                              
 
                                 <div class="col-12">
-                                    <a href="{{url('/package')}}">
+                                    <a href="{{url('/ticket')}}">
                                         <button type="button" class="btn btn-secondary">Back</button>
                                     </a>
                                     <button type="submit" id="submit" class="btn btn-primary">Add</button>
@@ -179,87 +179,133 @@
 
 
 
-<script>
-    $("#submit").click(function() {
-        var to = $("#to").val();
-        var from = $("#from").val();
-        var reference = $("#reference").val();
-        var name = $("#name").val();
-        
-        var passenger = $("#passenger").val();
-        var purchase = $("#purchase").val();
-        var sale = $("#sale").val();
+    <script>
+        $("#submit").click(function() {
+            var to = $("#to").val();
+            var from = $("#from").val();
+            var reference = $("#reference").val();
+            var name = $("#name").val();
+            
+            var passenger = $("#passenger").val();
+            var purchase = $("#purchase").val();
+            var sale = $("#sale").val();
 
-        var paymentMethod = $("#paymentMethod").val();
-        var payRecieved = $("#payRecieved").val();
+            var paymentMethod = $("#paymentMethod").val();
+            var payRecieved = $("#payRecieved").val();
 
 
-            if(to.length == "")
+                if(to.length == "")
+                {
+                $("#p1").text("This field is required!");
+                $("#to").focus();
+                return false;
+                }
+
+            else if(from.length == "")
             {
-            $("#p1").text("This field is required!");
-            $("#to").focus();
-            return false;
+                $("#p2").text("This field is required!");
+                $("#from").focus();
+                return false;
+            }
+            else if(reference.length == "")
+            {
+                $("#p3").text("This field is required!");
+                $("#reference").focus();
+                return false;
+            }
+            else if(name.length == "")
+            {
+                $("#p4").text("This field is required!");
+                $("#name").focus();
+                return false;
+            }
+            else if(passenger.length == "")
+            {
+                $("#p5").text("This field is required!");
+                $("#passenger").focus();
+                return false;
+            }
+            else if(purchase.length == "")
+            {
+                $("#p6").text("This field is required!");
+                $("#purchase").focus();
+                return false;
+            }
+            else if(sale.length == "")
+            {
+                $("#p7").text("This field is required!");
+                $("#sale").focus();
+                return false;
+            }
+            else if(paymentMethod.length == "")
+            {
+                $("#p8").text("This field is required!");
+                $("#paymentMethod").focus();
+                return false;
+            }
+            else if(payRecieved.length == "")
+            {
+                $("#p9").text("This field is required!");
+                $("#payRecieved").focus();
+                return false;
+            }
+            
+            else{
+                return true;
             }
 
-          else if(from.length == "")
-          {
-            $("#p2").text("This field is required!");
-            $("#from").focus();
-            return false;
-          }
-          else if(reference.length == "")
-          {
-            $("#p3").text("This field is required!");
-            $("#reference").focus();
-            return false;
-          }
-          else if(name.length == "")
-          {
-            $("#p4").text("This field is required!");
-            $("#name").focus();
-            return false;
-          }
-          else if(passenger.length == "")
-          {
-            $("#p5").text("This field is required!");
-            $("#passenger").focus();
-            return false;
-          }
-          else if(purchase.length == "")
-          {
-            $("#p6").text("This field is required!");
-            $("#purchase").focus();
-            return false;
-          }
-          else if(sale.length == "")
-          {
-            $("#p7").text("This field is required!");
-            $("#sale").focus();
-            return false;
-          }
-          else if(paymentMethod.length == "")
-          {
-            $("#p8").text("This field is required!");
-            $("#paymentMethod").focus();
-            return false;
-          }
-          else if(payRecieved.length == "")
-          {
-            $("#p9").text("This field is required!");
-            $("#payRecieved").focus();
-            return false;
-          }
-         
-          else{
-            return true;
-          }
+
+            
+
+            
+        });
+    </script>
 
 
-        
+    <script>
+        $(document).ready(function() {
+            //  get value of profit
+            $("#purchase").keyup(function() {
+                var purchase = $(this).val();
+                var sale = $('#sale').val();
 
-          
-      });
-</script>
+                var profit = sale - purchase;
+                $('#profit').val(profit);
+            });
+
+
+            // here we ger remaining payment
+            $("#payRecieved").keyup(function() {
+                var payRecieved = $(this).val();
+                var sale = $('#sale').val();
+
+                var remain = sale - payRecieved;
+                $('#remaining').val(remain);
+            });
+
+
+        // here we get existing customer data
+            $("#cusNum").change(function(){
+                var id = $(this).val();
+                $.ajax({
+                    url:'{{ url('/customer/fetch/data') }}',
+                    type:'get',
+                    data:{'id':id},
+                    success:function(data){
+                        $('#reference').val(data.uniqueId);
+                        $('#name').val(data.fullname);
+                        $('#email').val(data.email);
+                        $('#address').val(data.address);
+                        $('#phone').val(data.phone);
+                        toastr.success('Existing customer data added!');
+                    }
+                });
+            
+            });
+    });
+    </script>
+
+
 
 
 @endsection

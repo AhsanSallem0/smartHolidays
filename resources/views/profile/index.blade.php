@@ -123,7 +123,6 @@
 
 										<div class="tab-pane fade" id="tab_block_2">
 											<div class="title-lg fs-4"><span>Account Settings</span></div>
-											<p class="mb-4">The Avatar component is used to represent a user, and displays the profile picture, initials or fallback icon.</p>
 											<form action="{{url('admin/profile/update2/'.$user->id)}}" method="POST" enctype="multipart/form-data" >
 												@csrf
 												<div class="row gx-3">

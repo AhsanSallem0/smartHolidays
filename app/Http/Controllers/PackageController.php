@@ -8,6 +8,7 @@ use App\Models\UniqueId;
 use App\Models\User;
 use App\Models\Customer;
 use App\Models\Expense;
+use App\Models\Ticket;
 use Illuminate\Support\Carbon;
 use DB;
 use Hash;
@@ -40,18 +41,35 @@ class PackageController extends Controller
         return view('ticket.add',compact('customer','referenceNo'));
     }
 
-
-
-    public function checkEmailAvailability(Request $request)
-    {
-        $reference = $request->input('reference');
-
-        $user = Customer::where('uniqueId', $reference)->first();
-
-        if ($user) {
-            return response(['success'=>'success']);
-        }
-        else{
+    // ticket insert
+    public function ticketInsert(Request $request){
+        $reference = $request->reference;
+        $found = DB::table('customers')->where('uniqueId' , $reference)->first();
+        if($found){
+            Ticket::insert([
+                'to' => $request->to,
+                'from' => $request->from,
+                'customerId' => $request->reference,
+                'customerName' => $request->name,
+                'customerEmail' => $request->email,
+                'customerAddress' => $request->address,
+                'customerPhone' => $request->phone,
+                'passengerCount' => $request->passenger,
+                'purchsasePrice' => $request->purchase,
+                'salePrice' => $request->sale,
+                'profit' => $request->profit,
+                'paymentMethod' => $request->paymentMethod,
+                'paymentRecieved' => $request->payRecieved,
+                'paymentRemaining' => $request->remainingPayment,
+                'created_at' => Carbon::now(),
+            ]);
+                $notification = array(
+                    'message' => 'New ticket has been added!',
+                    'alert_type' => 'success'
+                );
+                return Redirect()->back()->with($notification);
+        }else{ 
+            
             Customer::insert([
                 'uniqueId' => $request->reference,
                 'fullname' => $request->name,
@@ -59,10 +77,39 @@ class PackageController extends Controller
                 'phone' => $request->phone,
                 'address' => $request->address,
                 'created_at' => Carbon::now(),
-                
             ]);
-            return response(['done'=>'done']);
 
+            Ticket::insert([
+                'to' => $request->to,
+                'from' => $request->from,
+                'customerId' => $request->reference,
+                'customerName' => $request->name,
+                'customerEmail' => $request->email,
+                'customerAddress' => $request->address,
+                'customerPhone' => $request->phone,
+                'passengerCount' => $request->passenger,
+                'purchsasePrice' => $request->purchase,
+                'salePrice' => $request->sale,
+                'profit' => $request->profit,
+                'paymentMethod' => $request->paymentMethod,
+                'paymentRecieved' => $request->payRecieved,
+                'paymentRemaining' => $request->remainingPayment,
+                'created_at' => Carbon::now(),
+            ]);
+            $notification = array(
+                'message' => 'New ticket has been added!',
+                'alert_type' => 'success'
+            );
+            return Redirect()->back()->with($notification);
         }
     }
+
+        // program fetch data for fee
+        public function fetchCustomer(Request $request){
+            $data = Customer::where('uniqueId',$request->id)->first();
+            return response($data);
+        }
+    
+
+
 }

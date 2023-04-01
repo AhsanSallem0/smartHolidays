@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PackageController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,13 +64,17 @@ Route::post('/update/expense/{id}', [ExpenseController::class, 'update']);
 Route::get('/expense/delete/{id}', [ExpenseController::class, 'delete'])->name('delete');
 
 
-// package page
+// ticket page
 Route::get('/ticket', [PackageController::class, 'ticketPage'])->name('ticket');
-// /package/add
+// /ticket/add
 Route::get('/ticket/add', [PackageController::class, 'ticketAdd'])->name('ticket.add');
+// insert new ticket
+Route::post('/ticket/insert', [PackageController::class, 'ticketInsert'])->name('ticket.insert');
+// fetch customer data in ticket
+Route::get('/customer/fetch/data', [PackageController::class, 'fetchCustomer'])->name('fetchCustomer');
 
 
-// Route::post('/check-email-unique', [PackageController::class, 'checkEmailAvailability'])->name('check.email.unique');
+
 
 
 
