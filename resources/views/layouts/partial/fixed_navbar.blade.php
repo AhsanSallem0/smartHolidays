@@ -8,7 +8,7 @@
 				</a>
 				<!-- /Brand -->
 				<button class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover navbar-toggle d-xl-none"><span class="icon"><span class="feather-icon"><i data-feather="align-left"></i></span></span></button>
-					
+
 				<!-- Search -->
 				<form class="dropdown navbar-search">
 					<!-- <div class="dropdown-toggle no-caret" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside">
@@ -44,11 +44,11 @@
 				<!-- /Search -->
 			</div>
 			<!-- /Start Nav -->
-			
+
 			<!-- End Nav -->
 			<div class="nav-end-wrap">
 				<ul class="navbar-nav flex-row">
-				
+
 					<li class="nav-item">
 						<div class="dropdown ps-2">
 							<a class=" dropdown-toggle no-caret" href="#" role="button" data-bs-display="static" data-bs-toggle="dropdown" data-dropdown-animation data-bs-auto-close="outside" aria-expanded="false">
@@ -59,14 +59,14 @@
 							<div class="dropdown-menu dropdown-menu-end">
 								<div class="p-2">
 									<div class="media">
-										
+
 										<div class="media-body">
 											<div class="dropdown">
 												<a href="" class="d-block  link-dark fw-medium"  >{{Auth::user()->name}}</a>
-											
+
 											</div>
 											<div class="fs-7">{{Auth::user()->email}}</div>
-											
+
 										</div>
 									</div>
 								</div>
@@ -82,12 +82,12 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-							
+
 							</div>
 						</div>
 					</li>
 				</ul>
 			</div>
 			<!-- /End Nav -->
-			</div>									
+			</div>
 		</nav>

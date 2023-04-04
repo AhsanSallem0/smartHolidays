@@ -5,6 +5,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\TargetController;
+
+
 
 
 /*
@@ -72,8 +77,48 @@ Route::get('/ticket/add', [PackageController::class, 'ticketAdd'])->name('ticket
 Route::post('/ticket/insert', [PackageController::class, 'ticketInsert'])->name('ticket.insert');
 // fetch customer data in ticket
 Route::get('/customer/fetch/data', [PackageController::class, 'fetchCustomer'])->name('fetchCustomer');
+// yajra for tickrt page
+Route::get('/ticket/get',[PackageController::class, 'ticketData'])->name('ticket.data');
+// ticket detail
+Route::get('/ticket/detail/{id}', [PackageController::class, 'ticketdetail'])->name('ticketdetail');
+// ticket partials
+Route::get('/ticket/partial/{id}', [PackageController::class, 'ticketpartial'])->name('ticketpartial');
+// partials payment Recived
+Route::post('update/partial/{id}', [PackageController::class, 'partialrec'])->name('partialrec');
 
 
+// suppllier
+Route::get('/supplier', [SupplierController::class, 'supplierPage'])->name('supplier');
+//// yajra for supplier
+Route::get('/supplier/get',[SupplierController::class, 'supplierData'])->name('supplier.data');
+// /insert/supplier
+Route::post('/insert/supplier', [SupplierController::class, 'insert']);
+// supplier/edit/
+Route::get('/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('edit');
+// update supplier
+Route::post('/update/supplier/{id}', [SupplierController::class, 'update']);
+// supplier delete
+Route::get('/supplier/delete/{id}', [SupplierController::class, 'delete'])->name('delete');
+
+//employee
+Route::get('/employee', [EmployeeController::class, 'employeePage'])->name('employee');
+//// yajra for supplier
+Route::get('/employee/get',[EmployeeController::class, 'employeeData'])->name('employee.data');
+// /insert/employee
+Route::post('/insert/employee', [EmployeeController::class, 'insert']);
+// employee/edit/
+Route::get('employee/edit/{id}', [EmployeeController::class, 'edit'])->name('edit');
+// update employee
+Route::post('/update/employee/{id}', [EmployeeController::class, 'update']);
+// employee delete
+Route::get('/employee/delete/{id}', [EmployeeController::class, 'delete'])->name('delete');
+
+//target
+Route::get('/target', [TargetController::class, 'targetPage'])->name('target');
+//// yajra for target
+Route::get('/target/get',[TargetController::class, 'targetData'])->name('target.data');
+// /insert/target
+Route::post('/insert/target', [TargetController::class, 'insert']);
 
 
 

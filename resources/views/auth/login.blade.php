@@ -80,15 +80,7 @@ Contact: contact@hencework.com
 															</div>
 														</div>
 													</div>
-													<div class="d-flex justify-content-center">
-														<div class="form-check form-check-sm mb-3">
-															
-                                                            <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-															<label class="form-check-label text-muted fs-7" for="logged_in">Remember me!</label>
-                                                            
-														</div>
-													</div>
-													<button type="submit"  class="btn btn-primary btn-uppercase btn-block my-3">Login</button>
+													<button type="submit"  class="btn btn-primary btn-uppercase btn-block my-4">Login</button>
 													<!-- <p class="p-xs mt-2 text-center">New to Jampack? <a href="#"><u>Create new account</u></a></p> -->
 												</div>
 											</div>

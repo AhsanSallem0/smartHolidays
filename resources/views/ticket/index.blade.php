@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="row justify-content-end">
-        <div class="col-2 my-2">
+        <div class="col-lg-2 col-md-3 col-sm-5 col-12 my-2">
             <a href="{{url('/ticket/add')}}">
                 <button class="btn btn-block btn-primary  btn-sm">Add new ticket</button>
             </a>
@@ -10,19 +10,25 @@
         <div class="col-lg-12 ">
             <div class="card">
                 <div class="card-header">
-                    All Packges
+                    All Tickets
                 </div>
                 <div class="card-body">
                     <table class="table" style="width: 100%" id="users-table">
                         <thead>
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Reference No#</th>
+                            <th scope="col">Custommer Name</th>
+                            <th scope="col">Sale Price</th>
+                            <th scope="col">Purchase Price</th>
+                            <th scope="col">Profit</th>
+                            <th scope="col">Payment Method</th>
+                            <th scope="col">Recieved Amount</th>
+                            <th scope="col">Remaining Amount</th>
                             <th scope="col">Action</th>
+                            <th scope="col">Payments</th>
                             </tr>
                         </thead>
-                    
+
                     </table>
                 </div>
             </div>
@@ -37,29 +43,6 @@
 
 
 
-<script>
-    $("#submit2").click(function() {
-        var description = $("#description").val();
-        var price = $("#price").val();
-
-        if(description.length == "")
-            {
-            $("#p1").text("This field is required!");
-            $("#description").focus();
-            return false;
-            }
-          else if(price.length == "")
-          {
-            $("#p2").text("This field is required!");
-            $("#price").focus();
-            return false;
-          }
-          else{
-            return true;
-          }
-      });
-</script>
-
   <!-- DataTables -->
   <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
         <!-- Bootstrap JavaScript -->
@@ -69,23 +52,38 @@
         $('#users-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('expense.data') !!}',
+            ajax: '{!! route('ticket.data') !!}',
             columnDefs:[
                 {
-                    targets: 3,
+                    targets: 8,
                     title:'Action',
                     orderable:false,
+                    render: function(data,type,full,meta) {
+                        return ' <a class="btn btn-sm text-info mt-1" href="ticket/detail/' + full.id + '"><button type="button" class="btn btn-info btn-sm">Detail</button></a> '
+
+                    }},
+                {
+                    targets: 9,
+                    title:'Payments',
+                    orderable:false,
                     render: function(data,type,full,meta){
-                        return ' <a class="btn btn-sm text-info mt-1" href="expense/edit/'+full.id+'"><i class="fa fa-edit" style="  font-size: 16px;" ></i> </a> <a class="btn btn-sm text-danger" style="  font-size: 16px;" href="expense/delete/'+full.id+'"><i class="fa fa-trash-o"></i> </a>'
-                        
-                    }
+                        return ' <a class="btn btn-sm text-info mt-1" href="ticket/partial/'+full.id+'"><button type="button" class="btn btn-warning btn-sm">Partial</button></a> '
+
+                    },
+
+
                 }
             ],
             columns: [
-                
-                { data: 'id', name: 'id' },
-                { data: 'description', name: 'description' },
-                { data: 'price', name: 'price' },
+
+                { data: 'customerId', name: 'customerId' },
+                { data: 'customerName', name: 'customerName' },
+                { data: 'salePrice', name: 'salePrice' },
+                { data: 'purchsasePrice', name: 'purchsasePrice' },
+                { data: 'profit', name: 'profit' },
+                { data: 'paymentMethod', name: 'paymentMethod' },
+                { data: 'paymentRecieved', name: 'paymentRecieved' },
+                { data: 'paymentRemaining', name: 'paymentRemaining' },
             ]
         });
     });

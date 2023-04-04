@@ -23,6 +23,16 @@ class PackageController extends Controller
         return view('ticket.index');
     }
 
+    // yajra box
+    public function ticketData()
+    {
+        return Datatables::of(Ticket::query()->orderBy('id','desc'))
+        ->editColumn('paymentMethod', function($paymentMethod) {
+            return view('ticket.paymentMethod', compact('paymentMethod'));
+        })
+        ->make(true);
+    }
+
     // ticketAdd
     public function ticketAdd(){
         $prefix = 'SH';
@@ -68,8 +78,8 @@ class PackageController extends Controller
                     'alert_type' => 'success'
                 );
                 return Redirect()->back()->with($notification);
-        }else{ 
-            
+        }else{
+
             Customer::insert([
                 'uniqueId' => $request->reference,
                 'fullname' => $request->name,
@@ -109,7 +119,42 @@ class PackageController extends Controller
             $data = Customer::where('uniqueId',$request->id)->first();
             return response($data);
         }
-    
+        //Ticket Detail
+            public function ticketdetail($id){
+                $ticket = Ticket::find($id);
+                return view("ticket.detail",compact('ticket'));
+            }
+            //ticketpartial
+        public function ticketpartial($id){
+            $partial = Ticket::find($id);
+            return view("ticket.partial",compact('partial'));
+        }
+        //partialrec
+        public function partialrec($id , Request $request){
+          $recieved = $request->received;
+          $data = Ticket::where('id' , $id)->first();
+          $paymentRemaining = $data->paymentRemaining;
+
+
+          $paymentRecieved = $data->paymentRecieved;
+          $total = $paymentRecieved + $recieved;
+
+          $recived = $paymentRemaining - $recieved;
+
+            Ticket::where('id', $id)
+                ->update([
+                    'paymentRemaining' => $recieved,
+                    'paymentRecieved' => $total,
+                ]);
+
+            $notification = array(
+                'message' => 'Payment has been recieved!',
+                'alert_type' => 'success'
+            );
+            return Redirect()->back()->with($notification);
+        }
+
+
 
 
 }

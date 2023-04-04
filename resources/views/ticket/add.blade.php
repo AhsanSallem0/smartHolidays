@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <form action="{{url('/ticket/insert')}}" method="POST">
                         @csrf
-                        
+
                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
@@ -54,7 +54,7 @@
                                         <p id="p3" class="text-danger"></p>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Customer Name *</label>
@@ -152,9 +152,9 @@
 
                                     </div>
                                 </div>
-                               
 
-                             
+
+
 
                                 <div class="col-12">
                                     <a href="{{url('/ticket')}}">
@@ -164,8 +164,8 @@
                                 </div>
                            </div>
 
-                        </div>
-                     
+
+
                     </form>
                 </div>
             </div>
@@ -185,7 +185,7 @@
             var from = $("#from").val();
             var reference = $("#reference").val();
             var name = $("#name").val();
-            
+
             var passenger = $("#passenger").val();
             var purchase = $("#purchase").val();
             var sale = $("#sale").val();
@@ -249,15 +249,15 @@
                 $("#payRecieved").focus();
                 return false;
             }
-            
+
             else{
                 return true;
             }
 
 
-            
 
-            
+
+
         });
     </script>
 
@@ -300,7 +300,7 @@
                         toastr.success('Existing customer data added!');
                     }
                 });
-            
+
             });
     });
     </script>

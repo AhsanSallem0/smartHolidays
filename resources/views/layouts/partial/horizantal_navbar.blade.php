@@ -21,13 +21,13 @@
         </span>
     </div>
     <!-- /Brand -->
-    
+
     <!-- Main Menu -->
     <div data-simplebar class="nicescroll-bar">
         <div class="menu-content-wrap">
             <div class="container-fluid menu-group">
                 <ul class="navbar-nav flex-column">
-                    <li class="nav-item {{ Request::is('home') ? 'active':''; }}">
+                    <li class="nav-item {{ Request::is('home') ? 'active':'',}}">
                         <a class="nav-link" href="{{url('/home')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
@@ -75,7 +75,7 @@
                         </a>
                     </li> -->
 
-                    <li class="nav-item {{ Request::is('customer') ? 'active':''; }}">
+                    <li class="nav-item {{ Request::is('customer') ? 'active':'',}}">
                         <a class="nav-link" href="{{url('/customer')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
@@ -105,6 +105,54 @@
                         </a>
                     </li>
 
+
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{url('/supplier')}}">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                                        <path d="M4 13h3l3 3h4l3 -3h3" />
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Supplier</span>
+                        </a>
+                    </li>
+{{--                    //employee--}}
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/employee')}}">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                                        <path d="M4 13h3l3 3h4l3 -3h3" />
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Employee</span>
+                        </a>
+                    </li>
+{{--                    //target--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/target')}}">
+                            <span class="nav-icon-wrap">
+                                <span class="svg-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <rect x="4" y="4" width="16" height="16" rx="2" />
+                                        <path d="M4 13h3l3 3h4l3 -3h3" />
+                                    </svg>
+                                </span>
+                            </span>
+                            <span class="nav-link-text">Targets</span>
+                        </a>
+                    </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="email.html">
                             <span class="nav-icon-wrap">
@@ -119,7 +167,7 @@
                             <span class="nav-link-text">Report</span>
                         </a>
                     </li>
-                </ul>	
+                </ul>
             </div>
         </div>
     </div>
