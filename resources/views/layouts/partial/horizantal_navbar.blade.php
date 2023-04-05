@@ -154,7 +154,7 @@
 
 
                     <li class="nav-item">
-                        <a class="nav-link" href="email.html">
+                        <a class="nav-link" href="{{url('/report')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-inbox" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
