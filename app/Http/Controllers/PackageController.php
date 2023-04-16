@@ -77,7 +77,7 @@ class PackageController extends Controller
                     'message' => 'New ticket has been added!',
                     'alert_type' => 'success'
                 );
-                return Redirect()->back()->with($notification);
+                return Redirect('//ticket')->with($notification);
         }else{
 
             Customer::insert([
@@ -110,7 +110,7 @@ class PackageController extends Controller
                 'message' => 'New ticket has been added!',
                 'alert_type' => 'success'
             );
-            return Redirect()->back()->with($notification);
+            return Redirect('//ticket')->with($notification);
         }
     }
 
@@ -134,25 +134,55 @@ class PackageController extends Controller
           $recieved = $request->received;
           $data = Ticket::where('id' , $id)->first();
           $paymentRemaining = $data->paymentRemaining;
+         
 
 
           $paymentRecieved = $data->paymentRecieved;
           $total = $paymentRecieved + $recieved;
 
-          $recived = $paymentRemaining - $recieved;
+          $sale = $data->salePrice;
+                if($total > $sale){
+                    $notification = array(
+                        'message' => 'Recieved amount is greater then sale!',
+                        'alert_type' => 'warning'
+                    );
+                    return Redirect()->back()->with($notification);
+                }
+                else{
+                   if($total == $sale){
+                        $recived = $paymentRemaining - $recieved;
 
-            Ticket::where('id', $id)
-                ->update([
-                    'paymentRemaining' => $recieved,
-                    'paymentRecieved' => $total,
-                ]);
+                        Ticket::where('id', $id)
+                            ->update([
+                                'paymentMethod' => 'FullPay',
+                                'paymentRemaining' => $recived,
+                                'paymentRecieved' => $total,
+                            ]);
+            
+                        $notification = array(
+                            'message' => 'Payment has been recieved!',
+                            'alert_type' => 'success'
+                        );
+                    return Redirect('/ticket')->with($notification);
+                   }else{
+                        $recived = $paymentRemaining - $recieved;
 
-            $notification = array(
-                'message' => 'Payment has been recieved!',
-                'alert_type' => 'success'
-            );
-            return Redirect()->back()->with($notification);
-        }
+                        Ticket::where('id', $id)
+                            ->update([
+                                'paymentRemaining' => $recived,
+                                'paymentRecieved' => $total,
+                            ]);
+            
+                        $notification = array(
+                            'message' => 'Payment has been recieved!',
+                            'alert_type' => 'success'
+                        );
+                    return Redirect('/ticket')->with($notification);
+                   }
+                }
+            }
+
+       
 
 
 

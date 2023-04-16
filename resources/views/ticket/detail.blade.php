@@ -147,6 +147,10 @@
                                 <a href="{{url('/ticket')}}">
                                     <button type="button" class="btn btn-secondary">Back</button>
                                 </a>
+
+                                <a href="{{url('ticketPDF/'.$ticket->id)}}">
+                                    <button type="button" class="btn btn-info">Export PDF</button>
+                                </a>
                             </div>
                         </div>
 

@@ -81,7 +81,7 @@ Contact: contact@hencework.com
 														</div>
 													</div>
 													<button type="submit"  class="btn btn-primary btn-uppercase btn-block my-4">Login</button>
-													<!-- <p class="p-xs mt-2 text-center">New to Jampack? <a href="#"><u>Create new account</u></a></p> -->
+													<p class="p-xs mt-2 text-center" style="font-size: 17px"><a href="">Forgot password?</a></p>
 												</div>
 											</div>
 										</div>

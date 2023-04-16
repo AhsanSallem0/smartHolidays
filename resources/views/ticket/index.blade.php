@@ -25,7 +25,6 @@
                             <th scope="col">Recieved Amount</th>
                             <th scope="col">Remaining Amount</th>
                             <th scope="col">Action</th>
-                            <th scope="col">Payments</th>
                             </tr>
                         </thead>
 
@@ -62,17 +61,7 @@
                         return ' <a class="btn btn-sm text-info mt-1" href="ticket/detail/' + full.id + '"><button type="button" class="btn btn-info btn-sm">Detail</button></a> '
 
                     }},
-                {
-                    targets: 9,
-                    title:'Payments',
-                    orderable:false,
-                    render: function(data,type,full,meta){
-                        return ' <a class="btn btn-sm text-info mt-1" href="ticket/partial/'+full.id+'"><button type="button" class="btn btn-warning btn-sm">Partial</button></a> '
-
-                    },
-
-
-                }
+                
             ],
             columns: [
 

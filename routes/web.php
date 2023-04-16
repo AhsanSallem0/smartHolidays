@@ -8,6 +8,9 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\TargetController;
+use App\Http\Controllers\PDFController;
+
+
 
 
 
@@ -119,6 +122,13 @@ Route::get('/target', [TargetController::class, 'targetPage'])->name('target');
 Route::get('/target/get',[TargetController::class, 'targetData'])->name('target.data');
 // /insert/target
 Route::post('/insert/target', [TargetController::class, 'insert']);
+
+
+
+// pdf routes
+Route::get('/ticketPDF/{id}',[PDFController::class, 'ticketPDF'])->name('ticketPDF');
+
+
 
 
 
