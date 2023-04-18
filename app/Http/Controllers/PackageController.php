@@ -71,6 +71,7 @@ class PackageController extends Controller
                 'paymentMethod' => $request->paymentMethod,
                 'paymentRecieved' => $request->payRecieved,
                 'paymentRemaining' => $request->remainingPayment,
+                'desc' => $request->desc,
                 'created_at' => Carbon::now(),
             ]);
                 $notification = array(
@@ -104,6 +105,7 @@ class PackageController extends Controller
                 'paymentMethod' => $request->paymentMethod,
                 'paymentRecieved' => $request->payRecieved,
                 'paymentRemaining' => $request->remainingPayment,
+                'desc' => $request->desc,
                 'created_at' => Carbon::now(),
             ]);
             $notification = array(

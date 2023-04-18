@@ -84,6 +84,8 @@
                                             <input type="number" class="form-control" id="phone" name="phone" placeholder="">
                                     </div>
                                 </div>
+
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Passenger *</label>
@@ -92,6 +94,14 @@
 
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Description</label>
+                                            <input type="text" class="form-control" id="desc" name="desc" placeholder="">
+                                    </div>
+                                </div>
+
                                 <div class="col-12">
                                     <hr>
                                 </div>

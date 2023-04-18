@@ -12,6 +12,7 @@ use App\Http\Controllers\PDFController;
 
 
 
+use App\Http\Controllers\ReportController;
 
 
 
@@ -122,6 +123,16 @@ Route::get('/target', [TargetController::class, 'targetPage'])->name('target');
 Route::get('/target/get',[TargetController::class, 'targetData'])->name('target.data');
 // /insert/target
 Route::post('/insert/target', [TargetController::class, 'insert']);
+// employee/edit/
+Route::get('/target/edit/{id}', [TargetController::class, 'edit']);
+// /update/target
+Route::post('/update/target/{id}', [TargetController::class, 'Update']);
+//Report
+Route::get('/report', [ReportController::class, 'reportpage']);
+//Report pagetoday
+Route::get('/todayreport', [ReportController::class, 'todayreport']);
+
+
 
 
 

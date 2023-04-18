@@ -14,6 +14,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Month</th>
                             <th scope="col">Set Amount</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
                         </thead>
@@ -57,6 +58,22 @@
                             <p id="p2" class="text-danger"></p>
 
                         </div>
+                        <!-- <div class="form-group">
+                            <label for="exampleInputPassword1">Achieve Amount</label>
+                            <input type="text" class="form-control text-black" id="achieve_amount"  name="achieve_amount" placeholder="">
+                            <p id="p3" class="text-danger"></p>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Status</label>
+                            <select  class="form-control" id="status" name="status">
+                                <option selected value='achieved'>Achieved</option>
+                                <option value='no achieved'>No Achieved</option>
+                            </select>
+                            <p id="p4" class="text-danger"></p>
+
+                        </div> -->
 
 
                         <button type="submit" id="submit" class="btn btn-primary">Submit</button>
@@ -77,6 +94,8 @@
         $("#submit").click(function() {
             var month = $("#month").val();
             var amount = $("#amount").val();
+            var achieve_amount = $("#achieve_amount").val();
+            var status = $("#status").val();
 
             if(month.length == "")
             {
@@ -88,6 +107,20 @@
             {
                 $("#p2").text("Amount required!");
                 $("#amount").focus();
+                return false;
+            }
+            else if(achieve_amount.length == "")
+            {
+
+                $("#p3").text("Achieve_amount required!");
+                $("#achieve_amount").focus();
+                return false;
+            }
+            else if(status.length == "")
+            {
+
+                $("#p4").text("Status required!");
+                $("#status").focus();
                 return false;
             }
             else{
@@ -108,11 +141,11 @@
                 ajax: '{!! route('target.data') !!}',
                 columnDefs:[
                     {
-                        targets:3,
+                        targets:4,
                         title:'Action',
                         orderable:false,
                         render: function(data,type,full,meta){
-                            return ' <a class="btn btn-sm text-info mt-1" href="target/edit/'+full.id+'"><i class="fa fa-edit" style="  font-size: 16px;" ></i> </a>'
+                            return ' <a class="btn btn-sm text-info mt-1" href="/target/edit/'+full.id+'"><i class="fa fa-edit" style="  font-size: 16px;" ></i> </a>'
 
                         }
                     }
@@ -120,8 +153,9 @@
                 columns: [
 
                     { data: 'id', name: 'id' },
-                    { data: 'Month', name: 'Month' },
-                    { data: 'Amount', name: 'Amount' },
+                    { data: 'Month', name: 'month' },
+                    { data: 'Amount', name: 'amount' },
+                    { data: 'status', name: 'status' },
 
                 ]
             });

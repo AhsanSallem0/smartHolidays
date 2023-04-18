@@ -81,6 +81,13 @@
 
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Description</label>
+                                    <input type="text" class="form-control text-dark" disabled id="desc" value="{{$ticket->desc}}" name="desc" placeholder="">
+
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <hr>
                             </div>
@@ -103,7 +110,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Profit</label>
-                                    <input type="number" value="0"  class="form-control text-dark" id="profit" disabled value="{{$ticket->profit}}"  name="profit" placeholder="">
+                                    <input type="number" class="form-control text-dark" id="profit" disabled value="{{$ticket->profit}}"  name="profit" placeholder="">
 
                                 </div>
                             </div>
@@ -135,7 +142,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Remaining balance </label>
-                                    <input type="number"  value="0" class="form-control text-dark"  disabled id="remaining" value="{{$ticket->paymentRemaining}}"  name="remainingPayment" placeholder="">
+                                    <input type="number" class="form-control text-dark"  disabled id="remaining" value="{{$ticket->paymentRemaining}}"  name="remainingPayment" placeholder="">
 
                                 </div>
                             </div>

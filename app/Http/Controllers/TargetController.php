@@ -27,10 +27,12 @@ class TargetController extends Controller
     public function targetData()
     {
         return Datatables::of(Target::query()->orderBy('id','desc'))
-
+            ->editColumn('status', function($status) {
+                return view('target.status', compact('status'));
+            })
             ->make(true);
     }
-    
+
     // insert Expense
     public function insert(Request $request){
         Target::insert([
@@ -39,11 +41,36 @@ class TargetController extends Controller
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'New targer has been added!',
+            'message' => 'New target has been added!',
             'alert_type' => 'success'
         );
         return Redirect()->back()->with($notification);
         }
-    
+
+
+        ///Edit Target
+    public function edit($id){
+        $target = Target::find($id);
+        return view("target.edit",compact('target'));
+    }
+    // update
+    public function update(Request $request,$id){
+        // $achieve_amount = $request->achieve_amount;
+        // $status = $request->status;
+
+
+        Target::find($id)->update([
+            'Amount' => $request->amount,
+            'Month' => $request->month,
+
+            'updated_at' => Carbon::now(),
+        ]);
+        $notification = array(
+            'message' => 'Target data has been updated!',
+            'alert_type' => 'warning'
+        );
+        return Redirect('/target')->with($notification);
+    }
+
 
 }
