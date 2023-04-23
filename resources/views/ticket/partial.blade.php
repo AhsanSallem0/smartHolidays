@@ -2,8 +2,28 @@
 @section('content')
 
     <div class="row justify-content-center">
+    <div class="col-md-8 ">
+            <div class="card">
+                <div class="card-header">
+                    Record
+                </div>
+                <div class="card-body">
+                    <table class="table" style="width: 100%" id="users-table">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Pay Amount</th>
+                            <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                    
+                    </table>
+                </div>
+            </div>
+        </div>
 
-        <div class="col-md-6 mt-1">
+
+        <div class="col-md-4 mt-1">
             <div class="card">
                 <div class="card-header">
                     Partial Payments
@@ -46,5 +66,26 @@
 
 
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- DataTables -->
+  <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+        <!-- Bootstrap JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script>
+    $(function() {
+        $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('partial.data',"$partial->id") !!} ',
+            columns: [
+                
+                { data: 'id', name: 'id' },
+                { data: 'payment', name: 'payment' },
+                { data: 'date', name: 'date' },
+            ]
+        });
+    });
+</script>
 
 @endsection

@@ -36,6 +36,8 @@ class ExpenseController extends Controller
     Expense::insert([
         'description' => $request->description,
         'price' => $request->price,
+        'date' => date('Y-m-d'),
+        'month' => date('Y-m'),
         'created_at' => Carbon::now(),
     ]);
     $notification = array(

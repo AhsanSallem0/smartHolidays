@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Description</label>
                                             <input type="text" class="form-control" id="desc" name="desc" placeholder="">
@@ -137,7 +137,6 @@
                                         <label for="exampleInputPassword1">Payment Method *</label>
                                         <select name="paymentMethod" class="form-control" id="paymentMethod">
                                             <option value="" selected> -- Select on of them --</option>
-                                            <option value="Cash">Cash</option>
                                             <option value="FullPay">FullPay</option>
                                             <option value="Partial">Partial</option>
                                         </select>
@@ -313,7 +312,20 @@
 
             });
     });
-    </script>
+        $(document).ready(function(){
+            $('#paymentMethod').on('change', function() {
+            if ( this.value == 'FullPay')
+            {
+               var sale = $('#sale').val();
+               $('#payRecieved').val(sale);
+            }
+            else
+            {
+                $('#payRecieved').val('');
+            }
+            });
+        });
+</script>
 
 
 

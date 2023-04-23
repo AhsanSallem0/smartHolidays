@@ -3,7 +3,6 @@
 @elseif($paymentMethod->paymentMethod == 'FullPay')
     <span class="badge bagde-sm bg-success">FullPay</span>
 @else
-    <span class="badge bagde-sm bg-danger">
-        <a class=" text-white" href="{{url('/ticket/partial/'. $paymentMethod->id)}}">{{$paymentMethod->paymentMethod}}</a>
-    </span>
+    <span class="badge bagde-sm bg-danger">{{$paymentMethod->paymentMethod}}</span>
+
 @endif  

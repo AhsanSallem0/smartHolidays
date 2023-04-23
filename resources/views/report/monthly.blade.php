@@ -18,12 +18,12 @@
                 <div class="card">
                     <div class="card-body">
                                 <div class="col-12 text-end">
-                                    <a href="{{url('/todayPdf')}}">
+                                    <a href="{{url('/monthPdf')}}">
                                         <button type="button" class="btn btn-info">Export PDF</button>
                                     </a>
 
                                 </div>
-                        <h3 class="card-title">Today Reporting:</h3>
+                        <h3 class="card-title">Monthly Reporting:</h3>
                         <hr style="height: 2px; background-color:black;">
 
                         <table class="table table-bordered">
@@ -50,7 +50,7 @@
                         <div class="card mt-5">
                             
                             <div class="card-header">
-                                Today record
+                                Monthly record
                             </div>
                             <div class="card-body">
                                 <table class="table" style="width: 100%" id="users-table">
@@ -94,7 +94,7 @@
         $('#users-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('ticket.data.today') !!}',
+            ajax: '{!! route('ticket.data.month') !!}',
             columns: [
 
                 { data: 'customerId', name: 'customerId' },

@@ -18,29 +18,19 @@
                 <div class="card">
                     <div class="card-body">
                                 <div class="col-12 text-end">
-                                    <a href="{{url('/todayPdf')}}">
+                                    <a href="{{url('/todayExpensePdf')}}">
                                         <button type="button" class="btn btn-info">Export PDF</button>
                                     </a>
 
                                 </div>
-                        <h3 class="card-title">Today Reporting:</h3>
+                        <h3 class="card-title">Today Expense:</h3>
                         <hr style="height: 2px; background-color:black;">
 
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th scope="col">Total Sale (Rs.)</th>
-                                    <td>{{$sale}}</td>
-                                    <th scope="row">Total Purchase (Rs.)</th>
-                                    <td>{{$purchase}}</td>
-                                    <th scope="col">Your Profit (Rs.)</th>
-                                    <td>{{$profit}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Payment Recieved (Rs.)</th>
-                                    <td>{{$recieved}}</td>
-                                    <th scope="col">Remaining Payment (Rs.)</th>
-                                    <td>{{$remaining}}</td>
+                                    <th scope="col">Total Expense (Rs.)</th>
+                                    <td>{{$expense}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -56,18 +46,14 @@
                                 <table class="table" style="width: 100%" id="users-table">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Reference No#</th>
-                                        <th scope="col">Custommer Name</th>
-                                        <th scope="col">Sale Price</th>
-                                        <th scope="col">Purchase Price</th>
-                                        <th scope="col">Profit</th>
-                                        <th scope="col">Payment Method</th>
-                                        <th scope="col">Recieved Amount</th>
-                                        <th scope="col">Remaining Amount</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Price</th>
                                         <th scope="col">Date</th>
+                                        <!-- <th scope="col">Action</th> -->
                                         </tr>
                                     </thead>
-
+                                
                                 </table>
                             </div>
                         </div>
@@ -94,17 +80,23 @@
         $('#users-table').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{!! route('ticket.data.today') !!}',
+            ajax: '{!! route('expense.data.today') !!}',
+            // columnDefs:[
+            //     {
+            //         targets: 3,
+            //         title:'Action',
+            //         orderable:false,
+            //         render: function(data,type,full,meta){
+            //             return ' <a class="btn btn-sm text-info mt-1" href="expense/edit/'+full.id+'"><i class="fa fa-edit" style="  font-size: 16px;" ></i> </a> <a class="btn btn-sm text-danger" style="  font-size: 16px;" href="expense/delete/'+full.id+'"><i class="fa fa-trash-o"></i> </a>'
+                        
+            //         }
+            //     }
+            // ],
             columns: [
-
-                { data: 'customerId', name: 'customerId' },
-                { data: 'customerName', name: 'customerName' },
-                { data: 'salePrice', name: 'salePrice' },
-                { data: 'purchsasePrice', name: 'purchsasePrice' },
-                { data: 'profit', name: 'profit' },
-                { data: 'paymentMethod', name: 'paymentMethod' },
-                { data: 'paymentRecieved', name: 'paymentRecieved' },
-                { data: 'paymentRemaining', name: 'paymentRemaining' },
+                
+                { data: 'id', name: 'id' },
+                { data: 'description', name: 'description' },
+                { data: 'price', name: 'price' },
                 { data: 'date', name: 'date' },
             ]
         });

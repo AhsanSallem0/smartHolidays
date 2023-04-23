@@ -1,92 +1,143 @@
 @extends('layouts.dashboard')
 @section('content')
 
-    <div class="row justify-content-end">
-        <div class="col-lg-2 col-md-3 col-sm-5 col-12 my-2">
-            <a href="">
-                <button class="btn btn-block btn-primary  btn-sm"> Add Today-Reports</button>
-            </a>
-        </div>
-        <div class="col-lg-12 ">
-            <div class="card">
-                <div class="card-header">
-                    Today Reports
-                </div>
-                <div class="card-body">
-                    <table class="table" style="width: 100%" id="users-table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Reference No#</th>
-                            <th scope="col">Custommer Name</th>
-                            <th scope="col">Sale Price</th>
-                            <th scope="col">Purchase Price</th>
-                            <th scope="col">Profit</th>
-                            <th scope="col">Payment Method</th>
-                            <th scope="col">Recieved Amount</th>
-                            <th scope="col">Remaining Amount</th>
-                            <th scope="col">Action</th>
-                            <th scope="col">Payments</th>
-                        </tr>
-                        </thead>
+<style>
+    .bg-primary{
+        background: rgb(198, 153, 68) !important;
+    }
+    .card{
+        box-shadow: 1px 2px 8px rgb(198, 153, 68) !important;
+    }
+    .card-title{
+        font-weight: bold;
+    }
+</style>
 
-                    </table>
+
+
+
+        <?php $role = Auth::user()->role_as; ?>
+    @if($role == 0)
+                <div class="card">
+                            <div class="card-header">Overall Report</div>
+                            <div class="card-body">
+                                   <div class="row">
+                                        <div class="col-12">
+                                            <h5>Ticket based report: </h5>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 ">
+                                            <a href="{{url('/overall/today/report')}}">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Today Report
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 ">
+                                            <a href="{{url('/overall/month/report')}}">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Monthly Report
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 ">
+                                            <a href="{{url('/overall/search/report')}}">
+                                                <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Search by date 
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <h5>Expense based report: </h5>
+                                        </div>
+                                        <div class="col-md-3 col-sm-6 ">
+                                            <a href="{{url('/today/expense')}}">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Today Expense
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 ">
+                                            <a href="{{url('/month/expense')}}">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">Monthly Expense
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+
+                                        <div class="col-md-3 col-sm-6 ">
+                                            <a href="{{url('/search/expense')}}">
+                                                <div class="card">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title">Search by date 
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                            </a>
+                                        </div>
+                                   </div>
+                            </div>
+                </div>
+    @endif
+
+
+   <div class="card">
+        <div class="card-header">Your Status</div>
+            <div class="card-body">
+                <div class="row mt-2">
+
+                    <div class="col-12">
+                        <h5>Ticket based report: </h5>
+                    </div>
+                    <div class="col-md-3 col-sm-6 ">
+                        <a href="{{url('/today/report')}}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Today Report
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 ">
+                        <a href="{{url('/month/report')}}">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Monthly Report
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 ">
+                        <a href="{{url('/search/report')}}">
+                            <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Search by date 
+                                        </h5>
+                                    </div>
+                                </div>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-
-
-
-    <!-- DataTables -->
-    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-    <!-- Bootstrap JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script>
-        $(function() {
-            $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('ticket.data') !!}',
-                columnDefs:[
-                    {
-                        targets: 8,
-                        title:'Action',
-                        orderable:false,
-                        render: function(data,type,full,meta) {
-                            return ' <a class="btn btn-sm text-info mt-1" href="ticket/detail/' + full.id + '"><button type="button" class="btn btn-info btn-sm">Detail</button></a> '
-
-                        }},
-                    {
-                        targets: 9,
-                        title:'Payments',
-                        orderable:false,
-                        render: function(data,type,full,meta){
-                            return ' <a class="btn btn-sm text-info mt-1" href="ticket/partial/'+full.id+'"><button type="button" class="btn btn-warning btn-sm">Partial</button></a> '
-
-                        },
-
-
-                    }
-                ],
-                columns: [
-
-                    { data: 'customerId', name: 'customerId' },
-                    { data: 'customerName', name: 'customerName' },
-                    { data: 'salePrice', name: 'salePrice' },
-                    { data: 'purchsasePrice', name: 'purchsasePrice' },
-                    { data: 'profit', name: 'profit' },
-                    { data: 'paymentMethod', name: 'paymentMethod' },
-                    { data: 'paymentRecieved', name: 'paymentRecieved' },
-                    { data: 'paymentRemaining', name: 'paymentRemaining' },
-                ]
-            });
-        });
-    </script>
+   
+    
+       
 
 @endsection

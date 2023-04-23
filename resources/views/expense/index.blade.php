@@ -14,6 +14,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Description</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -93,7 +94,7 @@
             ajax: '{!! route('expense.data') !!}',
             columnDefs:[
                 {
-                    targets: 3,
+                    targets: 4,
                     title:'Action',
                     orderable:false,
                     render: function(data,type,full,meta){
@@ -107,6 +108,7 @@
                 { data: 'id', name: 'id' },
                 { data: 'description', name: 'description' },
                 { data: 'price', name: 'price' },
+                { data: 'date', name: 'date' },
             ]
         });
     });

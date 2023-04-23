@@ -10,11 +10,11 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{url('/update/employee/'.$employee->userId)}}" method="POST">
+                    <form action="{{url('/update/employee/'.$employee->id)}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Full Name </label>
-                            <input type="text" class="form-control text-dark"   id="name" value="{{$employee->fullname}}" name="fullname" placeholder="">
+                            <input type="text" class="form-control text-dark"   id="name" value="{{$employee->name}}" name="fullname" placeholder="">
 
                         </div>
                         <div class="form-group">

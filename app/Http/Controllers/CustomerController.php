@@ -39,14 +39,18 @@ class CustomerController extends Controller
     // yajra boc
     public function customerData()
     {
-        return Datatables::of(Customer::query()->orderBy('id','desc'))
+        
+        $user_id = Auth::user()->id;
+        return Datatables::of(Customer::query()->where('userId' , $user_id)->orderBy('id','desc'))
         
         ->make(true);
     }
 
     // insert
     public function insert(Request $request){
+        $user_id = Auth::user()->id;
         Customer::insert([
+            'userId' => $user_id,
             'uniqueId' => $request->reference,
             'fullname' => $request->fullname,
             'email' => $request->email,
