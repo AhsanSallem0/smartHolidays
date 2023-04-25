@@ -24,9 +24,20 @@
                             <p id="p2" class="text-danger"></p>
 
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Date </label>
+                            <input type="text" class="form-control text-dark" disabled value="{{$expense->date}}" >
+
+                        </div>
                         <a href="{{url('/expense')}}">
                             <button type="button" class="btn btn-secondary">Back</button>
                         </a>
+
+
+                        <a href="{{url('/expenseDetailPdf/'.$expense->id)}}">
+                                        <button type="button" class="btn btn-info">Export PDF</button>
+                                    </a>
                         <button type="submit" id="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>

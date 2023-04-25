@@ -44,6 +44,10 @@
                         <a href="{{url('/customer')}}">
                             <button type="button" class="btn btn-secondary">Back</button>
                         </a>
+                                <a href="{{url('/customerDetailPdf/'.$customer->id)}}">
+                                        <button type="button" class="btn btn-info">Export PDF</button>
+                                    </a>
+
                         <button type="submit" id="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>

@@ -14,6 +14,7 @@
                             <th scope="col">#</th>
                             <th scope="col">Month</th>
                             <th scope="col">Set Amount</th>
+                            <th scope="col">Achieve Amount</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -35,20 +36,10 @@
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Select Month *</label>
-                                <select  class="form-control" id="month" name="month">
-                                    <option selected value='Janaury'>Janaury</option>
-                                    <option value='February'>February</option>
-                                    <option value='March'>March</option>
-                                    <option value='April'>April</option>
-                                    <option value='May'>May</option>
-                                    <option value='June'>June</option>
-                                    <option value='July'>July</option>
-                                    <option value='August'>August</option>
-                                    <option value='September'>September</option>
-                                    <option value='October'>October</option>
-                                    <option value='1November1'>November</option>
-                                    <option value='December'>December</option>
-                                </select>
+                            <input type="month" class="form-control" id="month" name="month" placeholder="">
+                            @error('month')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                             <p id="p1" class="text-danger"></p>
 
                         </div>
@@ -141,7 +132,7 @@
                 ajax: '{!! route('target.data') !!}',
                 columnDefs:[
                     {
-                        targets:4,
+                        targets:5,
                         title:'Action',
                         orderable:false,
                         render: function(data,type,full,meta){
@@ -153,8 +144,9 @@
                 columns: [
 
                     { data: 'id', name: 'id' },
-                    { data: 'Month', name: 'month' },
-                    { data: 'Amount', name: 'amount' },
+                    { data: 'month', name: 'month' },
+                    { data: 'amount', name: 'amount' },
+                    { data: 'achieveAmount', name: 'achieveAmount' },
                     { data: 'status', name: 'status' },
 
                 ]

@@ -232,6 +232,33 @@ Route::get('/overallsearchPDF',[PDFController::class, 'overallsearchPDF'])->name
 
 
 
+Route::get('/ticketsPDF',[PDFController::class, 'ticketsPDF'])->name('ticketsPDF');
+Route::get('/ticketDetailPdf/{id}',[PDFController::class, 'ticketDetailPdf'])->name('ticketDetailPdf');
+
+Route::get('/customersPDF',[PDFController::class, 'customersPDF'])->name('customersPDF');
+Route::get('/customerDetailPdf/{id}',[PDFController::class, 'customerDetailPdf'])->name('customerDetailPdf');
+Route::get('/expensePDF',[PDFController::class, 'expensePDF'])->name('expensePDF');
+Route::get('/expenseDetailPdf/{id}',[PDFController::class, 'expenseDetailPdf'])->name('expenseDetailPdf');
+Route::get('/employeesPDF',[PDFController::class, 'employeesPDF'])->name('employeesPDF');
+Route::get('/employeeDetailPdf/{id}',[PDFController::class, 'employeeDetailPdf'])->name('employeeDetailPdf');
+Route::get('/employeesDataPDF/{id}',[PDFController::class, 'employeesDataPDF'])->name('employeesDataPDF');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

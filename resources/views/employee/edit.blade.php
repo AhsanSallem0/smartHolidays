@@ -51,9 +51,21 @@
                             <p id="p4" class="text-danger"></p>
 
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Date</label>
+                            <input type="text" class="form-control text-dark"   id="dare" value="{{$employee->date}}" disabled placeholder="">
+
+                        </div>
                         <a href="{{url('/employee')}}">
                             <button type="button" class="btn btn-secondary">Back</button>
                         </a>
+
+                        <a href="{{url('/employeeDetailPdf/'.$employee->id)}}">
+                                        <button type="button" class="btn btn-info">Export PDF</button>
+                                    </a>
+
+
                         <button type="submit" id="submit" class="btn btn-primary">Update</button>
                     </form>
                 </div>

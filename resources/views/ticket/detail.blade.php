@@ -2,15 +2,17 @@
 @section('content')
 
     <div class="row justify-content-center">
-
         <div class="col-md-12 mt-1">
             <div class="card">
                 <div class="card-header">
-                   Add new Ticket
+                   Ticket Detail
                 </div>
 
                 <div class="card-body">
+                <?php $role = Auth::user()->role_as; ?>
+                    @if($role ==0)
                     <form action="{{url('/ticket/update/'.$ticket->id)}}" method="POST">
+                    @endif
 
                         @csrf
 
@@ -161,7 +163,7 @@
                                         <button type="button" class="btn btn-secondary">Back</button>
                                     </a>
 
-                                    <a href="{{url('ticketPDF/'.$ticket->id)}}">
+                                    <a href="{{url('/ticketDetailPdf/'.$ticket->id)}}">
                                         <button type="button" class="btn btn-info">Export PDF</button>
                                     </a>
 

@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <title>PDF Today overall  report</title>
+        <title>PDF Tickets</title>
         <!-- CSS only -->
         <style>
 
@@ -34,54 +34,26 @@
                         <br> -->
 
 
-            <div class="card">
-                <div class="card-header" style="background-color: rgb(198, 153, 68) !important; color: white; font-weight: bold; font-family: Candara;">
-                   Overall sToday Reporting
-                </div>
-
-                <div class="card-body">
-
-                        <table class="table table-bordered">
-                            <tbody>
-                                <tr>
-                                    <th scope="col">Total Sale (Rs.)</th>
-                                    <td>{{$sale}}</td>
-                                    <th scope="row">Total Purchase (Rs.)</th>
-                                    <td>{{$purchase}}</td>
-                                    <th scope="col">Your Profit (Rs.)</th>
-                                    <td>{{$profit}}</td>
-                                </tr>
-                                <tr>
-                                    <th scope="col">Payment Recieved (Rs.)</th>
-                                    <td>{{$recieved}}</td>
-                                    <th scope="col">Remaining Payment (Rs.)</th>
-                                    <td>{{$remaining}}</td>
-                                    <th scope="col"></th>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-
+          
 
                 <div class="card">
                 <div class="card-header" style="background-color: rgb(198, 153, 68) !important; color: white; font-weight: bold; font-family: Candara;">
                    Records:
                 </div>
                 <table class="table table-striped" style="font-size: 11px;">
-                        <thead>
+                    <thead>
                             <tr>
-                                <th scope="col">Reference No#</th>
+                            <th scope="col">Reference No#</th>
                             <th scope="col">To</th>
                             <th scope="col">From</th>
-                                <th scope="col">Custommer Name</th>
-                                <th scope="col">Sale Price</th>
-                                <th scope="col">Purchase Price</th>
-                                <th scope="col">Profit</th>
-                                <th scope="col">Payment Method</th>
-                                <th scope="col">Recieved Amount</th>
-                                <th scope="col">Remaining Amount</th>
-                                <th scope="col">Date</th>
+                            <th scope="col">Custommer Name</th>
+                            <th scope="col">Sale Price</th>
+                            <th scope="col">Purchase Price</th>
+                            <th scope="col">Profit</th>
+                            <th scope="col">Payment Method</th>
+                            <th scope="col">Recieved Amount</th>
+                            <th scope="col">Remaining Amount</th>
+                            <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody>

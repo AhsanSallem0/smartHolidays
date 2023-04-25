@@ -2,7 +2,17 @@
 @section('content')
 
     <div class="row">
+        
         <div class="col-lg-9">
+            
+<div class="row justify-content-end">
+    <div class="col-lg-2 col-md-3 col-sm-5 col-12 my-2">
+                <a href="{{url('/customersPDF')}}">
+                                        <button type="button" class="btn btn-block btn-info  btn-sm">Export PDF</button>
+                </a>
+        </div>
+</div>
+
             <div class="card">
                 <div class="card-header">
                     All Customers
@@ -17,6 +27,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Address</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -90,7 +101,7 @@
             ajax: '{!! route('customer.data') !!}',
             columnDefs:[
                 {
-                    targets: 6,
+                    targets: 7,
                     title:'Action',
                     orderable:false,
                     render: function(data,type,full,meta){
@@ -107,6 +118,7 @@
                 { data: 'email', name: 'email' },
                 { data: 'phone', name: 'phone' },
                 { data: 'address', name: 'address' },
+                { data: 'date', name: 'date' },
             ]
         });
     });

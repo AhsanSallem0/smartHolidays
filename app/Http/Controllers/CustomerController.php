@@ -41,7 +41,7 @@ class CustomerController extends Controller
     {
         
         $user_id = Auth::user()->id;
-        return Datatables::of(Customer::query()->where('userId' , $user_id)->orderBy('id','desc'))
+        return Datatables::of(Customer::query()->orderBy('id','desc'))
         
         ->make(true);
     }
@@ -56,6 +56,7 @@ class CustomerController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
+            'date' => date('Y-m-d'),
             'created_at' => Carbon::now(),
         ]);
         $notification = array(

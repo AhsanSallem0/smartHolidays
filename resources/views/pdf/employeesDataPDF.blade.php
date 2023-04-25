@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        <title>PDF Today overall  report</title>
+        <title>PDF </title>
         <!-- CSS only -->
         <style>
 
@@ -36,7 +36,7 @@
 
             <div class="card">
                 <div class="card-header" style="background-color: rgb(198, 153, 68) !important; color: white; font-weight: bold; font-family: Candara;">
-                   Overall sToday Reporting
+                   Over all status
                 </div>
 
                 <div class="card-body">
@@ -62,18 +62,86 @@
                             </tbody>
                         </table>
                 </div>
+        </div>
+
+
+        
+        <div class="card">
+                <div class="card-header" style="background-color: rgb(198, 153, 68) !important; color: white; font-weight: bold; font-family: Candara;">
+                   Monthly status
+                </div>
+
+                <div class="card-body">
+
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th scope="col">Total Sale (Rs.)</th>
+                                    <td>{{$monthlysale}}</td>
+                                    <th scope="row">Total Purchase (Rs.)</th>
+                                    <td>{{$monthlypurchase}}</td>
+                                    <th scope="col">Your Profit (Rs.)</th>
+                                    <td>{{$monthlyprofit}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Payment Recieved (Rs.)</th>
+                                    <td>{{$monthlyrecieved}}</td>
+                                    <th scope="col">Remaining Payment (Rs.)</th>
+                                    <td>{{$monthlyremaining}}</td>
+                                    <th scope="col"></th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+        </div>
+
+
+
+
+        
+        <div class="card">
+                <div class="card-header" style="background-color: rgb(198, 153, 68) !important; color: white; font-weight: bold; font-family: Candara;">
+                   Today status
+                </div>
+
+                <div class="card-body">
+
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th scope="col">Total Sale (Rs.)</th>
+                                    <td>{{$todaysale}}</td>
+                                    <th scope="row">Total Purchase (Rs.)</th>
+                                    <td>{{$todaypurchase}}</td>
+                                    <th scope="col">Your Profit (Rs.)</th>
+                                    <td>{{$todayprofit}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">Payment Recieved (Rs.)</th>
+                                    <td>{{$todayrecieved}}</td>
+                                    <th scope="col">Remaining Payment (Rs.)</th>
+                                    <td>{{$todayremaining}}</td>
+                                    <th scope="col"></th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+        </div>
+
 
 
                 <div class="card">
                 <div class="card-header" style="background-color: rgb(198, 153, 68) !important; color: white; font-weight: bold; font-family: Candara;">
                    Records:
                 </div>
-                <table class="table table-striped" style="font-size: 11px;">
+
+
+                    <table class="table table-striped" style="font-size: 14px;">
                         <thead>
                             <tr>
                                 <th scope="col">Reference No#</th>
-                            <th scope="col">To</th>
-                            <th scope="col">From</th>
                                 <th scope="col">Custommer Name</th>
                                 <th scope="col">Sale Price</th>
                                 <th scope="col">Purchase Price</th>
@@ -83,13 +151,11 @@
                                 <th scope="col">Remaining Amount</th>
                                 <th scope="col">Date</th>
                             </tr>
-                        </thead>
+                            </thead>
                         <tbody>
-                               @foreach($datas as $data)
+                            @foreach($datas as $data)
                                 <tr>
                                     <td>{{$data->customerId}}</td>
-                                    <td>{{$data->to}}</td>
-                                    <td>{{$data->from}}</td>
                                     <td>{{$data->customerName}}</td>
                                     <td>{{$data->salePrice}}</td>
                                     <td>{{$data->purchsasePrice}}</td>
@@ -104,7 +170,7 @@
                                     <td>{{$data->paymentRecieved}}</td>
                                     <td>{{$data->paymentRemaining}}</td>
                                     <td>{{$data->date}}</td>
-                                </tr>
+                               </tr>
                             @endforeach
                         </tbody>
                     </table>

@@ -47,6 +47,7 @@ class EmployeeController extends Controller
         $user->phone = $request->phone;
         $user->role_as = '1';
         $user->password = Hash::make($request->password);
+        $user->date = date('Y-m-d');
         $user->save();
 
         // $employee = new Employee();
@@ -104,7 +105,7 @@ class EmployeeController extends Controller
 
             return view("employee.detail",compact('employee','sale','purchase','profit','recieve','remain',
             'todaysale','todaypurchase','todayprofit','todayrecieve','todayremain',
-            'monthlysale','monthlypurchase','monthlyprofit','monthlyrecieve','monthlyremain',
+            'monthlysale','monthlypurchase','monthlyprofit','monthlyrecieve','monthlyremain','id',
             ));
         }
 

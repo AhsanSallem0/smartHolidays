@@ -286,7 +286,7 @@
                         </a>
                     </li> -->
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="{{url('/target')}}">
                             <span class="nav-icon-wrap">
                                 <span class="svg-icon">
@@ -299,7 +299,7 @@
                             </span>
                             <span class="nav-link-text">Targets</span>
                         </a>
-                    </li>
+                    </li> -->
 
 
                     <li class="nav-item">

@@ -35,6 +35,14 @@ class TargetController extends Controller
 
     // insert Expense
     public function insert(Request $request){
+
+ #
+        $validateData = $request->validate([
+            'month' => 'required|unique:targets',
+        ]);
+
+        
+
         Target::insert([
             'month' => $request->month,
             'amount' => $request->amount,
@@ -60,8 +68,8 @@ class TargetController extends Controller
 
 
         Target::find($id)->update([
-            'Amount' => $request->amount,
-            'Month' => $request->month,
+            'amount' => $request->amount,
+            'month' => $request->month,
 
             'updated_at' => Carbon::now(),
         ]);

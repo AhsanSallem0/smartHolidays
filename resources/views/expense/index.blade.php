@@ -3,6 +3,14 @@
 
     <div class="row">
         <div class="col-lg-8 ">
+
+        <div class="row justify-content-end">
+    <div class="col-lg-2 col-md-3 col-sm-5 col-12 my-2">
+                <a href="{{url('/expensePDF')}}">
+                                        <button type="button" class="btn btn-block btn-info  btn-sm">Export PDF</button>
+                </a>
+        </div>
+</div>
             <div class="card">
                 <div class="card-header">
                     All Expenses

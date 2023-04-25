@@ -49,7 +49,7 @@ class PackageController extends Controller
 
         $referenceNo = $UniqueId->referenceNo;
         $user_id = Auth::user()->id;
-        $customer = Customer::where('userId',$user_id)->get();
+        $customer = Customer::all();
         return view('ticket.add',compact('customer','referenceNo'));
     }
 
@@ -59,6 +59,38 @@ class PackageController extends Controller
         $found = DB::table('customers')->where('uniqueId' , $reference)->first();
         $user_id = Auth::user()->id;
         if($found){
+
+            $target = DB::table('targets')->where('month' ,date('Y-m') )->first();
+            if($target == null){
+                $notification = array(
+                    'message' => 'This month target is not set yet!',
+                    'alert_type' => 'warning'
+                );
+                return Redirect()->back()->with($notification);
+            }
+            else{
+                $requestAmont = $request->sale;
+                $amount = $target->achieveAmount;
+
+                $previous = $target->amount;
+
+                $total = $amount + $requestAmont;
+
+
+                if($total >= $previous){
+                    DB::table('targets')->where('month' , date('Y-m'))->update(array('achieveAmount' => $total , 'status' => 1));
+                }else{
+                    DB::table('targets')->where('month' , date('Y-m'))->update(array('achieveAmount' => $total));
+                }
+
+
+
+                
+                
+            
+
+
+
             Ticket::insert([
                 'userId' => $user_id,
                 'to' => $request->to,
@@ -80,13 +112,25 @@ class PackageController extends Controller
                 'month' => date('Y-m'),
                 'created_at' => Carbon::now(),
             ]);
+
+       
                 $notification = array(
                     'message' => 'New ticket has been added!',
                     'alert_type' => 'success'
                 );
                 return Redirect('/ticket')->with($notification);
+            }
         }else{
 
+            $target = DB::table('targets')->where('month' ,date('Y-m') )->first();
+            if($target == null){
+                $notification = array(
+                    'message' => 'This month target is not set yet!',
+                    'alert_type' => 'warning'
+                );
+                return Redirect()->back()->with($notification);
+            }
+            else{
             $user_id = Auth::user()->id;
             Customer::insert([
                 'userId' => $user_id,
@@ -95,6 +139,7 @@ class PackageController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'address' => $request->address,
+                'date' => date('Y-m-d'),
                 'created_at' => Carbon::now(),
             ]);
 
@@ -124,13 +169,27 @@ class PackageController extends Controller
                 'alert_type' => 'success'
             );
             return Redirect('/ticket')->with($notification);
+            }
         }
     }
 
         // program fetch data for fee
         public function fetchCustomer(Request $request){
-            $data = Customer::where('uniqueId',$request->id)->first();
-            return response($data);
+            $id = $request->id;
+            if($id != null){
+                $record = Customer::where('uniqueId',$request->id)->first();
+                return response(['success' => 'success',  'record' => $record]);
+
+
+            }else{
+                $prefix = 'SH';
+                $number = str_pad(mt_rand(1, 9999), 2, '0', STR_PAD_LEFT);
+                $uniqueId = $prefix . $number;
+                return response(['error' => 'error',  'uniqueId' => $uniqueId]);
+
+        
+    
+            }
         }
         //Ticket Detail
             public function ticketdetail($id){

@@ -36,7 +36,7 @@
 										<form action="{{url('admin/profile/update/'.$user->id)}}" method="POST" enctype="multipart/form-data" >
 
 												@csrf
-												<div class="row gx-3">
+												<!-- <div class="row gx-3">
 													<div class="col-sm-12">
 														<div class="form-group">
 															<div class="media align-items-center">
@@ -54,7 +54,7 @@
 															</div>
 														</div>
 													</div>
-												</div>
+												</div> -->
 
 												<div class="title title-xs title-wth-divider text-primary text-uppercase my-4"><span>Personal Info</span></div>
 												<div class="row gx-3">

@@ -25,8 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        $pieChart = "";
         $user_id = Auth::user()->id;
-        $employee = DB::table('employees')->count();
+        $employee = DB::table('users')->where('role_as' ,'!=', 0)->count();
         $customer = DB::table('customers')->count();
         $suppliers = DB::table('suppliers')->count();
 
@@ -57,8 +59,16 @@ class HomeController extends Controller
         $totalExpense = DB::table('expenses')->sum('price');
         $todayExpense = DB::table('expenses')->whereDate('created_at', now())->sum('price');
 
+
+       
+
+        $data = DB::table('targets')->select('amount', 'achieveAmount')->where('month', date('Y-m'))->get();
+
+
+
         $totalPartial = DB::table('tickets')->where('paymentMethod' , 'Partial')->where('userId' , $user_id)->count();
         return view('dashboard.index',compact('employee','customer','suppliers','totalSale','totalPurchase','profit','todaySale','todayPurchase',
-        'todayProfit','totalExpense','todayExpense','totalPartial','OveralltotalSale','OveralltotalPurchase','Overallprofit','OveralltodaySale','OveralltodayPurchase','OveralltodayProfit'));
+        'todayProfit','totalExpense','todayExpense','totalPartial','OveralltotalSale','OveralltotalPurchase','Overallprofit','OveralltodaySale','OveralltodayPurchase',
+        'OveralltodayProfit','data'));
     }
 }

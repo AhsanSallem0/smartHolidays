@@ -301,12 +301,21 @@
                     type:'get',
                     data:{'id':id},
                     success:function(data){
-                        $('#reference').val(data.uniqueId);
-                        $('#name').val(data.fullname);
-                        $('#email').val(data.email);
-                        $('#address').val(data.address);
-                        $('#phone').val(data.phone);
-                        toastr.success('Existing customer data added!');
+                        if(data.success == 'success'){
+                            $('#reference').val(data.record.uniqueId);
+                            $('#name').val(data.record.fullname);
+                            $('#email').val(data.record.email);
+                            $('#address').val(data.record.address);
+                            $('#phone').val(data.record.phone);
+                            toastr.success('Existing customer data added!');
+                        }
+                        else{
+                            $('#reference').val(data.uniqueId);
+                            $('#name').val('');
+                            $('#email').val('');
+                            $('#address').val('');
+                            $('#phone').val('');
+                        }
                     }
                 });
 

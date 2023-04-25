@@ -7,6 +7,13 @@
                 <button class="btn btn-block btn-primary  btn-sm">Add new ticket</button>
             </a>
         </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-5 col-12 my-2">
+                <a href="{{url('/ticketsPDF')}}">
+                                        <button type="button" class="btn btn-block btn-info  btn-sm">Export PDF</button>
+                </a>
+        </div>
+
         <div class="col-lg-12 ">
             <div class="card">
                 <div class="card-header">
@@ -17,6 +24,8 @@
                         <thead>
                             <tr>
                             <th scope="col">Reference No#</th>
+                            <th scope="col">To</th>
+                            <th scope="col">From</th>
                             <th scope="col">Custommer Name</th>
                             <th scope="col">Sale Price</th>
                             <th scope="col">Purchase Price</th>
@@ -24,6 +33,7 @@
                             <th scope="col">Payment Method</th>
                             <th scope="col">Recieved Amount</th>
                             <th scope="col">Remaining Amount</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -54,7 +64,7 @@
             ajax: '{!! route('ticket.data') !!}',
             columnDefs:[
                 {
-                    targets: 8,
+                    targets: 11,
                     title:'Action',
                     orderable:false,
                     render: function(data,type,full,meta) {
@@ -66,6 +76,8 @@
             columns: [
 
                 { data: 'customerId', name: 'customerId' },
+                { data: 'to', name: 'to' },
+                { data: 'from', name: 'from' },
                 { data: 'customerName', name: 'customerName' },
                 { data: 'salePrice', name: 'salePrice' },
                 { data: 'purchsasePrice', name: 'purchsasePrice' },
@@ -73,6 +85,7 @@
                 { data: 'paymentMethod', name: 'paymentMethod' },
                 { data: 'paymentRecieved', name: 'paymentRecieved' },
                 { data: 'paymentRemaining', name: 'paymentRemaining' },
+                { data: 'date', name: 'date' },
             ]
         });
     });

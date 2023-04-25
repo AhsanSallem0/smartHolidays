@@ -57,6 +57,8 @@
                                     <thead>
                                         <tr>
                                         <th scope="col">Reference No#</th>
+                            <th scope="col">To</th>
+                            <th scope="col">From</th>
                                         <th scope="col">Custommer Name</th>
                                         <th scope="col">Sale Price</th>
                                         <th scope="col">Purchase Price</th>
@@ -98,6 +100,8 @@
             columns: [
 
                 { data: 'customerId', name: 'customerId' },
+                { data: 'to', name: 'to' },
+                { data: 'from', name: 'from' },
                 { data: 'customerName', name: 'customerName' },
                 { data: 'salePrice', name: 'salePrice' },
                 { data: 'purchsasePrice', name: 'purchsasePrice' },

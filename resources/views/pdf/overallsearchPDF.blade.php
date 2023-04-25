@@ -77,10 +77,12 @@
                 </div>
 
 
-                    <table class="table table-striped" style="font-size: 14px;">
+                    <table class="table table-striped" style="font-size: 11px;">
                         <thead>
                             <tr>
                                 <th scope="col">Reference No#</th>
+                            <th scope="col">To</th>
+                            <th scope="col">From</th>
                                 <th scope="col">Custommer Name</th>
                                 <th scope="col">Sale Price</th>
                                 <th scope="col">Purchase Price</th>
@@ -95,6 +97,8 @@
                             @foreach($datas as $data)
                                 <tr>
                                     <td>{{$data->customerId}}</td>
+                                    <td>{{$data->to}}</td>
+                                    <td>{{$data->from}}</td>
                                     <td>{{$data->customerName}}</td>
                                     <td>{{$data->salePrice}}</td>
                                     <td>{{$data->purchsasePrice}}</td>
@@ -103,7 +107,7 @@
                                         @if($data->paymentMethod == 'FullPay')
                                             <span class="badge bg-success text-white">FullPay</span>
                                         @else
-                                            <span class="badge bg-danger text-white">Partial</span>
+                                           <span class="badge bg-danger text-white">{{$data->paymentMethod}}</span>
                                         @endif
                                     </td>
                                     <td>{{$data->paymentRecieved}}</td>
